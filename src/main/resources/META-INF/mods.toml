@@ -1,0 +1,39 @@
+modLoader = "javafml"
+loaderVersion = "[47,)"
+license = "All rights reserved"
+
+[[mods]]
+modId = "yinyang"
+version = "1.0.0"
+displayName = "God Of Yinyang"
+description = '''
+An immortal, flying yin-yang boss. Nothing can kill it, and it erases anything it fights.
+'''
+
+[[dependencies.yinyang]]
+modId = "forge"
+mandatory = true
+versionRange = "[47,)"
+ordering = "NONE"
+side = "BOTH"
+
+[[dependencies.yinyang]]
+modId = "minecraft"
+mandatory = true
+versionRange = "[1.20.1,1.20.2)"
+ordering = "NONE"
+side = "BOTH"
+
+[[dependencies.yinyang]]
+modId = "geckolib"
+mandatory = true
+versionRange = "[4.4,)"
+ordering = "AFTER"
+side = "BOTH"
+
+[[dependencies.yinyang]]
+modId = "pehkui"
+mandatory = true
+versionRange = "[3,)"
+ordering = "AFTER"
+side = "BOTH"
