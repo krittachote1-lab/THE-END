@@ -3,28 +3,69 @@ plugins {
     id 'eclipse'
     id 'maven-publish'
 }
+
 group = 'com.breakerch.yogiri'
 version = '1.0.0'
-base { archivesName = 'YOGIRI-THE-END' }
+
+base {
+    archivesName = 'YOGIRI-THE-END'
+}
+
 java.toolchain.languageVersion = JavaLanguageVersion.of(17)
 
 minecraft {
     mappings channel: 'official', version: '1.20.1'
     copyIdeResources = true
+
     runs {
         configureEach {
             workingDirectory project.file('run')
             property 'forge.logging.markers', 'REGISTRIES'
             property 'forge.logging.console.level', 'info'
-            mods { yogiri { source sourceSets.main } }
+            mods {
+                yogiri {
+                    source sourceSets.main
+                }
+            }
         }
+
         client {}
-        server { args '--nogui' }
+        server {
+            args '--nogui'
+        }
     }
 }
 
-repositories { mavenCentral() }
+repositories {
+    mavenCentral()
+
+    // GeckoLib
+    maven {
+        name = 'GeckoLib'
+        url = 'https://dl.cloudsmith.io/public/geckolib3/geckolib/maven/'
+    }
+
+    // CurseMaven for Pehkui
+    maven {
+        name = 'CurseMaven'
+        url = 'https://cursemaven.com'
+    }
+}
+
 dependencies {
     minecraft 'net.minecraftforge:forge:1.20.1-47.2.0'
+
+    // GeckoLib 4.2.2
+    implementation fg.deobf(
+        'software.bernie.geckolib:geckolib-forge-1.20.1:4.2.2'
+    )
+
+    // Pehkui 3.8.2 for Minecraft 1.20.1 Forge
+    implementation fg.deobf(
+        'curse.maven:pehkui-319596:5393101'
+    )
 }
-tasks.withType(JavaCompile).configureEach { options.encoding = 'UTF-8' }
+
+tasks.withType(JavaCompile).configureEach {
+    options.encoding = 'UTF-8'
+}
