@@ -13,7 +13,7 @@ Pehkui is optional; the mod detects it safely at runtime.'''
 [[dependencies.yogiri_the_end]]
 modId="forge"
 mandatory=true
-versionRange="[47,)"
+versionRange="[47.4.28,)"
 ordering="NONE"
 side="BOTH"
 
